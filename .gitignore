@@ -1,3 +1,9 @@
+# ai
+*.pth
+data/processed/animal_dataset.csv
+*.DS_STORE
+*.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
