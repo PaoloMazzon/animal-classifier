@@ -1,0 +1,6 @@
+NUM_CLASSES = 4
+MAX_LENGTH = 128
+BATCH_SIZE = 16
+EPOCHS = 5
+LEARNING_RATE = 2e-5
+MODEL_NAME = "distilbert-base-uncased"
