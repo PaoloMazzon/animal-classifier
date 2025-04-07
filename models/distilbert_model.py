@@ -11,5 +11,6 @@ class DistilBERTClassifier(nn.Module):
     def forward(self, input_ids, attention_mask):
         outputs = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
         pooled_output = outputs.last_hidden_state[:, 0, :]  # Use [CLS] token representation
-        logits = self.classifier(pooled_output)
+        self.dropout = nn.Dropout(0.3)
+        logits = self.classifier(self.dropout(pooled_output))
         return logits

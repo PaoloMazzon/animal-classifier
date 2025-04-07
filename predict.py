@@ -22,7 +22,7 @@ def predict(text):
         predicted_class = torch.argmax(logits, dim=1).item()
     return predicted_class
 
-sample = "This animal flies at night and uses echolocation."
+sample = "popular pet, well-known for their loyalty"
 print(predict(sample))
 predicted_id = predict(sample)
 print("Predicted class:", id_to_label[predicted_id])
