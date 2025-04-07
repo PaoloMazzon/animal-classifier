@@ -7,13 +7,6 @@ from utils.config import MODEL_NAME, MAX_LENGTH, BATCH_SIZE
 
 tokenizer = DistilBertTokenizer.from_pretrained(MODEL_NAME)
 
-description = "This animal has black and white stripes, lives in Africa, and eats grass."
-tokens = tokenizer.tokenize(description)
-num_tokens = len(tokens)
-
-print("Tokens:", tokens)
-print("Total tokens:", num_tokens)
-
 class AnimalDataset(Dataset):
     def __init__(self, texts, labels):
         self.texts = texts
@@ -40,7 +33,8 @@ class AnimalDataset(Dataset):
 def load_dataset(csv_path, test_size=0.2):
     df = pd.read_csv(csv_path)
 
-    label_to_idx = {label: idx for idx, label in enumerate(sorted(df['label'].unique()))}
+    unique_labels = sorted(df['label'].unique())
+    label_to_idx = {label: idx for idx, label in enumerate(unique_labels)}
     df['label'] = df['label'].map(label_to_idx)
 
     train_texts, val_texts, train_labels, val_labels = train_test_split(
@@ -53,4 +47,4 @@ def load_dataset(csv_path, test_size=0.2):
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
-    return train_loader, val_loader
+    return train_loader, val_loader, label_to_idx, train_labels.tolist(), val_labels.tolist()
