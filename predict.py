@@ -22,7 +22,7 @@ def predict(text):
         predicted_class = torch.argmax(logits, dim=1).item()
     return predicted_class
 
-sample = "This animal flies at night and uses echolocation."
+sample = "small, domesticated carnivores belonging to the Felidae family, known for their flexible bodies, retractable claws, and acute senses, often kept as pets for their companionship and ability to hunt vermin"
 print(predict(sample))
 predicted_id = predict(sample)
 print("Predicted class:", id_to_label[predicted_id])
