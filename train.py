@@ -17,14 +17,16 @@ if __name__ == "__main__":
     print(pd.Series(val_labels).value_counts())
 
     model = DistilBERTClassifier(num_classes=NUM_CLASSES)
-
-# 🔒 Freeze all encoder layers
     for param in model.encoder.parameters():
         param.requires_grad = False
 
-    # 🔓 Unfreeze only the last 2 transformer layers (layer.4 and layer.5)
     for name, param in model.encoder.named_parameters():
         if "transformer.layer.4" in name or "transformer.layer.5" in name:
             param.requires_grad = True
+
+    print("\nTrainable parameters:")
+    for name, param in model.named_parameters():
+        if param.requires_grad:
+            print(f"{name}")
 
     train(model, train_loader, val_loader, device)
