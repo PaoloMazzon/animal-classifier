@@ -12,7 +12,9 @@ id_to_label = {
     0: "bat",
     1: "cat",
     2: "dog",
-    3: "snake"
+    3: "horse",
+    4: "snake",
+    5: "tiger"
 }
 
 def predict(text):
@@ -22,7 +24,6 @@ def predict(text):
         predicted_class = torch.argmax(logits, dim=1).item()
     return predicted_class
 
-sample = "small, domesticated carnivores belonging to the Felidae family, known for their flexible bodies, retractable claws, and acute senses, often kept as pets for their companionship and ability to hunt vermin"
-print(predict(sample))
-predicted_id = predict(sample)
+user_input = input("Enter a description of the animal: ")
+predicted_id = predict(user_input)
 print("Predicted class:", id_to_label[predicted_id])
