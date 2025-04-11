@@ -2,10 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
-
-from models.distilbert_model import DistilBERTClassifier
-from data.dataset_loader import load_dataset
-from utils.config import NUM_CLASSES, LEARNING_RATE, EPOCHS
+from utils.config import LEARNING_RATE, EPOCHS
 import os
 
 def train(model, train_loader, val_loader, device):
@@ -60,3 +57,6 @@ def evaluate(model, val_loader, device):
 
     accuracy = correct / total
     print(f"Validation Accuracy: {accuracy:.4f}")
+    
+    
+

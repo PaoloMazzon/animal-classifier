@@ -16,7 +16,9 @@ id_to_label = {
     0: "bat",
     1: "cat",
     2: "dog",
-    3: "snake"
+    3: "horse",
+    4: "snake",
+    5: "tiger"
 }
 
 # Flask app

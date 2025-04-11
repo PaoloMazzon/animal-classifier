@@ -12,7 +12,9 @@ id_to_label = {
     0: "bat",
     1: "cat",
     2: "dog",
-    3: "snake"
+    3: "horse",
+    4: "snake",
+    5: "tiger"
 }
 
 def predict(text):
@@ -22,7 +24,6 @@ def predict(text):
         predicted_class = torch.argmax(logits, dim=1).item()
     return predicted_class
 
-sample = "are the only mammals capable of true flight, belonging to the order Chiroptera, which means hand-wing in Greek, due to their wings being modified hands with a thin membrane stretched between their fingers"
-print(predict(sample))
-predicted_id = predict(sample)
+user_input = input("Enter a description of the animal: ")
+predicted_id = predict(user_input)
 print("Predicted class:", id_to_label[predicted_id])
