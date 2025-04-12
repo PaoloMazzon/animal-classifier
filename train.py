@@ -16,10 +16,13 @@ if __name__ == "__main__":
     print("Class distribution in validation set:")
     print(pd.Series(val_labels).value_counts())
 
+    # Freeze layers
     model = DistilBERTClassifier(num_classes=NUM_CLASSES)
     for param in model.encoder.parameters():
         param.requires_grad = False
-
+        
+        
+    # Unfreez
     for name, param in model.encoder.named_parameters():
         if "transformer.layer.4" in name or "transformer.layer.5" in name:
             param.requires_grad = True

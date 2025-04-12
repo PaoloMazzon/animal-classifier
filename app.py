@@ -5,13 +5,11 @@ from transformers import DistilBertTokenizer
 from models.distilbert_model import DistilBERTClassifier
 from utils.config import MODEL_NAME, NUM_CLASSES, MAX_LENGTH
 
-# Load tokenizer and model
 tokenizer = DistilBertTokenizer.from_pretrained(MODEL_NAME)
 model = DistilBERTClassifier(num_classes=NUM_CLASSES)
 model.load_state_dict(torch.load("saved_models/distilbert_animal_classifier.pth", map_location='cpu'))
 model.eval()
 
-# Class label mapping
 id_to_label = {
     0: "bat",
     1: "cat",
@@ -21,7 +19,6 @@ id_to_label = {
     5: "tiger"
 }
 
-# Flask app
 app = Flask(__name__)
 CORS(app, resources={r"/predict": {"origins": "*"}})
 

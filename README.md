@@ -7,6 +7,7 @@ This project uses a fine-tuned DistilBERT model to classify 6 animals
 ## Project Structure
 
 ```
+Animal-Classifier
 ├── data/
 │   ├── processed/
 │   │   └── animal_dataset.csv
