@@ -99,3 +99,4 @@ python app.py
 | **Flask**         | REST API backend                    | BSD-3-Clause |
 | **Flask-CORS**    | CORS support for Flask              | MIT          |
 | **SentencePiece** | Tokenizer model support (if used)   | Apache 2.0   |
+
